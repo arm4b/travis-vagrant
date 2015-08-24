@@ -24,7 +24,8 @@ install:
   - vagrant -v
 
 script:
-  - egrep '(vmx|svm)' /proc/cpuinfo
+  # http://askubuntu.com/a/41554
+  - egrep '(vmx|svm)' /proc/cpuinfo || exit 0
   - vagrant init ${IMAGE}
   - vagrant up
   - vagrant ssh-config
