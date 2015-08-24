@@ -1,0 +1,20 @@
+sudo: required
+language: ruby
+
+services:
+  - docker
+
+install:
+  - sudo apt-get update
+  - sudo apt-get -y install build-essential linux-headers-`uname -r` dkms
+  - sudo apt-get -y install virtualbox virtualbox-dkms
+  - VBoxManage -v
+  - sudo apt-get -y install vagrant
+  - vagrant -v
+
+script:
+  - egrep '(vmx|svm)' /proc/cpuinfo
+  - vagrant init ubuntu/trusty32
+  - vagrant up
+  - vagrant ssh-config
+  - netstat -lan
