@@ -9,9 +9,14 @@ env:
   - IMAGE=ubuntu/trusty64
   - IMAGE=ubuntu/precise32
   - IMAGE=ubuntu/precise64
+  - IMAGE=hashicorp/precise32
+  - IMAGE=hashicorp/precise64
 
 install:
+  # for virtualbox
   - sudo add-apt-repository multiverse
+  # for vagrant
+  - sudo sed 's/utopic/vivid/g' -i /etc/apt/sources.list
   - sudo apt-get update
   - sudo apt-get -y install build-essential linux-headers-`uname -r` dkms
   - sudo apt-get -y install virtualbox virtualbox-dkms
