@@ -11,6 +11,7 @@ env:
   - IMAGE=ubuntu/precise64
 
 install:
+  - sudo add-apt-repository multiverse
   - sudo apt-get update
   - sudo apt-get -y install build-essential linux-headers-`uname -r` dkms
   - sudo apt-get -y install virtualbox virtualbox-dkms
