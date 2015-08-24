@@ -3,6 +3,12 @@ language: ruby
 
 services:
   - docker
+  
+env:
+  - IMAGE=ubuntu/trusty32
+  - IMAGE=ubuntu/trusty64
+  - IMAGE=ubuntu/precise32
+  - IMAGE=ubuntu/precise64
 
 install:
   - sudo apt-get update
@@ -14,7 +20,7 @@ install:
 
 script:
   - egrep '(vmx|svm)' /proc/cpuinfo
-  - vagrant init ubuntu/trusty32
+  - vagrant init ${IMAGE}
   - vagrant up
   - vagrant ssh-config
   - netstat -lan
