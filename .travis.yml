@@ -13,8 +13,8 @@ env:
   - IMAGE=hashicorp/precise64
 
 install:
-  # for virtualbox
-  - sudo add-apt-repository multiverse
+  - sudo echo "deb http://download.virtualbox.org/virtualbox/debian precise contrib" | sudo tee -a /etc/apt/sources.list
+  - wget http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
   - sudo apt-get update
   - sudo apt-get -y install build-essential linux-headers-`uname -r` dkms
   - sudo apt-get -y install virtualbox virtualbox-dkms
@@ -25,7 +25,7 @@ install:
 
 script:
   # http://askubuntu.com/a/41554
-  - egrep '(vmx|svm)' /proc/cpuinfo || exit 0
+  - egrep '(vmx|svm)' /proc/cpuinfo || echo $?
   - vagrant init ${IMAGE}
   - vagrant up
   - vagrant ssh-config
