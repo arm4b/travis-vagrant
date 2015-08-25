@@ -9,12 +9,6 @@ env:
   - IMAGE=ubuntu/trusty64
   - IMAGE=ubuntu/precise32
   - IMAGE=ubuntu/precise64
-  - IMAGE=puppetlabs/centos-6.6-32-puppet
-  - IMAGE=puppetlabs/centos-6.6-64-puppet
-  - IMAGE=puppetlabs/debian-7.8-32-puppet
-  - IMAGE=puppetlabs/debian-7.8-64-puppet
-  - IMAGE=debian/wheezy64
-  - IMAGE=debian/jessie64
 
 install:
   - sudo echo "deb http://download.virtualbox.org/virtualbox/debian precise contrib" | sudo tee -a /etc/apt/sources.list
