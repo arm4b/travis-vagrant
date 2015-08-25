@@ -26,6 +26,7 @@ install:
   - sudo wget -nv https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
   - sudo dpkg -i vagrant_1.7.4_x86_64.deb
   - vagrant -v
+  - sudo apt-get -y install sshpass
 
 script:
   # http://askubuntu.com/a/41554
@@ -34,4 +35,4 @@ script:
   - vagrant up
   - vagrant ssh-config
   - netstat -lan
-  - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/travis/build/armab/travis-vagrant/.vagrant/machines/default/virtualbox/private_key vagrant@localhost -p 2222 'uname -a'
+  - sshpass -p 'vagrant' ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vagrant@localhost -p 2222 'uname -a'
