@@ -34,3 +34,4 @@ script:
   - vagrant up
   - vagrant ssh-config
   - netstat -lan
+  - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/travis/.vagrant.d/insecure_private_key vagrant@localhost -p 2222 'uname -a'
